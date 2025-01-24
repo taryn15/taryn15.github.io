@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HW2 Leaflet Map</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+        integrity="sha512- xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" 
+        crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+        crossorigin=""></script>
+        
+    </head>
+    <body>
+         <h1 style = "background-color:DodgerBlue;">Welcome to Rockefeller Center</h1>
+    <div id="mapid"></div>
+
+    <style>
+        #mapid{ width: 900px; height: 500px; }
+    </style>
+        <script>
+             var map = L.map('mapid').setView([40.75861, -73.97917], 17); 
+        // these are long and lad of Rockefeller center
+
+             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+        // L.tileLayer can display a tile layer. You can check out other tile layer examples at 
+        // https://leaflet-extras.github.io/leaflet-providers/preview/. The
+        // location of the tile layer needs to be in single quotes. You can also indicate
+        // the attribution for that layer. In this example we used the Open StreetMap attribution. The '&copy; <a> and the other 
+        // information you see here is HTML codeadding a copyright sign, and making a hyperlink to OpenStreetMap.
+        // At the end we include .addTo(map), which is indicating to add the tile layer to the variable map.
+
+             var rockIcon = L.icon({
+            iconUrl: 'https://cdn-icons-png.flaticon.com/128/17417/17417973.png', // Image URL of Rockefeller Center
+            iconSize: [50, 50],
+            popupAnchor: [0, 0]
+            });
+
+             L.marker([40.75861, -73.97917], {icon: rockIcon}).addTo(map)
+             .bindPopup('<p>Did you know that the first Christmas tree at Rockefeller Center was put up in 1931? The employees all pitched in to pay for it.</p><img src = "./443b3e68c46c83b24af1c4d30c8c878189041d10-4500x3000.avif" style = "width:100px">')
+             //.bindPopup('Hey I am at Rockefeller Center')
+           // .bindPopup('Hey I am at Rockefeller Center <img src="ttps://cdn.sanity.io/images/bs9rmafh/main/443b3e68c46c83b24af1c4d30c8c878189041d10-4500x3000.jpg?rect=1,0,4499,3000&w=2560&h=1707&auto=format" style="width: 200px; height: auto;"/>')
+        // .openPopup();
+
+
+        </script>
+    </body>
+
+</html>
